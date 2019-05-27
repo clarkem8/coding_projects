@@ -1,7 +1,0 @@
-name: test
-channels:
-  - defaults
-  - kx
-dependencies:
-  - python=3.6
-  - jupyterq
