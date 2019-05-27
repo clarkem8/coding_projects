@@ -1,5 +1,7 @@
 #!/bin/bash
 
-echo $PWD
+echo "Recipe dir is - $RECIPE_DIR"
 
-cp -r /home/ec2-user/coding_projects/kdb/src /home/ec2-user/anaconda3/envs/test/kdb-core/
+mkdir -p $PREFIX/kdb-core
+
+cp -rf $RECIPE_DIR/../../src $PREFIX/kdb-core/
