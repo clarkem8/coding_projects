@@ -1,6 +1,7 @@
 name: core
 channels:
  - kx
+ - file://home/ec2-user/condarepo/
 dependencies:
  - python=3.6
  - kdb
