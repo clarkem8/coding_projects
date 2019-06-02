@@ -7,3 +7,4 @@ dependencies:
  - kdb
  - jupyter
  - pandas
+ - kdb-core
