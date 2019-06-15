@@ -1,0 +1,33 @@
+[user]
+  name = clarkem8
+
+[credential]
+  helper = cache --timeout 7200
+
+[alias]
+  ch = checkout
+  co = commit -m
+  st = status
+  br = branch
+  hist = log --oneline --decorate --stat
+  ps = push origin
+  root = rev-parse --show-toplevel
+
+[color]
+  ui = true
+
+[color "branch"]
+  current = yellow bold
+  local = normal
+  remote = blue bold
+
+[color "diff"]
+  meta = white bold
+  frag = cyan bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = green dim
+  changed = cyan dim
+  untracked = blue bold
