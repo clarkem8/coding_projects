@@ -8,4 +8,6 @@ s3_bucket="clarkem8-dev-store"
 aws s3 cp s3://$s3_bucket/rlwrap /usr/bin/
 aws s3 cp s3://$s3_bucket/libtinfo.so.5 /usr/bin/
 
-yum install git
+path=echo $(dirname $0)
+chmod 755 $path/
+$path/
