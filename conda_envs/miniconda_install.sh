@@ -8,4 +8,4 @@ chmod 755 $HOME/installs/*
 # -p to install into particular directory
 # -b to install in batch and agree to terms
 # -u to update an existing install if it exists
-$HOME/installs/Anaconda3-2019.03-Linux-x86_64.sh -b -u -p /home/clarkem8/
+$HOME/installs/Anaconda3-2019.03-Linux-x86_64.sh -b -u -p $HOME/
