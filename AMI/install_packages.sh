@@ -1,4 +1,4 @@
 #!/bin/bash
 
-yum install git
-yum install tmux
+yum install git -y
+yum install tmux -y
