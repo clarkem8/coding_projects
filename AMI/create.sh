@@ -4,8 +4,8 @@ echo "Running create AMI script"
 s3_bucket="clarkem8-dev-store"
 
 # Copy installs for rlwrap from s3
-aws s3 cp s3://$s3_bucket/rlwrap /usr/bin/
-aws s3 cp s3://$s3_bucket/libtinfo.so.5 /usr/bin/
+aws s3 cp s3://$s3_bucket/utilities/rlwrap /usr/bin/
+aws s3 cp s3://$s3_bucket/utilities/libtinfo.so.5 /usr/bin/
 
 # Add user
 useradd $USER
