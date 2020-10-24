@@ -11,6 +11,7 @@ aws s3 cp s3://$s3_bucket/utilities/libtinfo.so.5 /usr/bin/
 export GIT_REPO=coding_projects
 export GIT_USER=clarkem8
 export USER=clarkem8
+export INSTALL_TEST=Yes
 
 # Add user
 useradd $USER
@@ -35,4 +36,10 @@ else
     chmod 755 $GIT_PATH/conda_envs/miniconda_install.sh
     sudo -i -u $USER $GIT_PATH/conda_envs/miniconda_install.sh
     sudo -i -u $USER /home/$USER/miniconda/bin/conda init
+fi
+
+if [[ $INSTALL_TEST =~ "Yes" ]]; then
+    # Install test conda environment
+    chmod 755 $GIT_PATH/conda_envs/create_env.sh
+    sudo -i -u $USER $GIT_PATH/conda_envs/create_env.sh $GIT_PATH/conda_envs/yaml_files/test.yml
 fi
