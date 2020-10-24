@@ -1,0 +1,8 @@
+name: test
+channels:
+ - kx
+dependencies:
+ - python=3.6
+ - kdb
+ - jupyter
+ - pandas
