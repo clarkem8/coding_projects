@@ -3,10 +3,6 @@ echo "Running create AMI script"
 
 s3_bucket="clarkem8-dev-store"
 
-# Copy installs for rlwrap from s3
-# aws s3 cp s3://$s3_bucket/utilities/rlwrap /usr/bin/
-# aws s3 cp s3://$s3_bucket/utilities/libtinfo.so.5 /usr/bin/
-
 # Get Ec2 instance tags
 export GIT_REPO=coding_projects
 export GIT_USER=clarkem8
