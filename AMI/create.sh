@@ -34,6 +34,12 @@ else
     sudo -i -u $USER /home/$USER/miniconda/bin/conda init
 fi
 
+# Setup user profile
+sudo -i -u $USER $GIT_PATH/AMI/profile_setup.sh
+
+# Configure aws cli
+sudo -i -u $USER $GIT_PATH/AMI/configure_aws_cli.sh
+
 if [[ $INSTALL_TEST =~ "Yes" ]]; then
     # Install test conda environment
     chmod 755 $GIT_PATH/conda_envs/create_env.sh
