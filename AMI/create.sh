@@ -1,7 +1,11 @@
 #!/bin/bash
 echo "Running create AMI script"
 
-s3_bucket="clarkem8-dev-store"
+#s3_bucket="clarkem8-dev-store"
+base_path=echo $(dirname $0)
+
+# Source utils script
+source "$base_path/../aws/utils.sh"
 
 # Get Ec2 instance tags
 export GIT_REPO=coding_projects
