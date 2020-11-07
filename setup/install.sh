@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Running $0"
-base_path=echo $(dirname $0)
+base_path=$(dirname $0)
 
 ## Configure aws cli
 # Find aws region from metadata
