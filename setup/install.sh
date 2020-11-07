@@ -6,6 +6,7 @@ base_path=$(dirname $(readlink -f $0))
 ## Configure aws cli
 # Find aws region from metadata
 REGION=$(/opt/aws/bin/ec2-metadata |grep placement|cut -c 11-20)
+echo "REGION=$REGION" >> $HOME/.env_vars
 
 mkdir $HOME/.aws
 echo "[default]" >> $HOME/.aws/config
@@ -16,4 +17,4 @@ echo "output=json" >> $HOME/.aws/config
 $base_path/profile_setup.sh
 
 # Export TAGS to .env_vars
-$base_path/profile_setup.sh
+$base_path/export_tags.sh
