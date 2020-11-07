@@ -11,6 +11,6 @@ get_ec2_tag () {
 
 get_all_ec2_tags () {
     aws ec2 describe-tags \
-        --filter "Name=resource-id,Values=i-04bf78da536b5fda9" | python -c \
-            "import sys; import json; print(' '.join(x['Value'] for x in json.load(sys.stdin)['Tags']))"
+        --filter "Name=resource-id,Values=$INSTANCEID" | python -c \
+            "import sys; import json; print(' '.join(x['Key'] for x in json.load(sys.stdin)['Tags']))"
 }
