@@ -6,6 +6,8 @@ base_path=echo $(dirname $0)
 
 # Source utils script
 source "$base_path/../aws/utils.sh"
+INSTANCE_NAME=echo $(get_ec2_tag Name)
+echo "Instance name is - $INSTANCE_NAME"
 
 # Get Ec2 instance tags
 export GIT_REPO=coding_projects
