@@ -12,6 +12,9 @@ export INSTALL_TEST=Yes
 # Add user
 useradd $USER
 
+# Setup user profile
+sudo -i -u $USER $GIT_PATH/AMI/profile_setup.sh
+
 if [[ "$INSTALL_FROM_S3" =~ "True" ]]; then
     echo "Installing from S3"
     # Download packages from S3 and install
@@ -33,9 +36,6 @@ else
     sudo -i -u $USER $GIT_PATH/conda_envs/miniconda_install.sh
     sudo -i -u $USER /home/$USER/miniconda/bin/conda init
 fi
-
-# Setup user profile
-sudo -i -u $USER $GIT_PATH/AMI/profile_setup.sh
 
 # Configure aws cli
 sudo -i -u $USER $GIT_PATH/AMI/configure_aws_cli.sh
