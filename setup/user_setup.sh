@@ -5,7 +5,7 @@ base_path=$(dirname $(readlink -f $0))
 
 ## Configure aws cli
 # Find aws region from metadata
-REGION=$(/opt/aws/bin/ec2-metadata |grep placement|cut -c 11-20)
+REGION=$(/opt/aws/bin/ec2-metadata |grep placement|cut -c 12-20)
 echo "REGION=$REGION" >> $HOME/.env_vars
 
 mkdir $HOME/.aws
