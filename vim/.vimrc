@@ -11,6 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 " general plugins
 Plugin 'itchyny/lightline.vim'
 Plugin 'mechatroner/rainbow_csv'
+Plugin 'dense-analysis/ale'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
