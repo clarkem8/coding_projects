@@ -6,7 +6,7 @@ base_path=$(dirname $(readlink -f $0))
 # Add user
 useradd $USER
 
-if [[ $CF_INSTALL ~= "Yes" ]];then
+if [[ $CF_INSTALL == "Yes" ]];then
     # Install git and clone repo
     yum install git -y
     GIT_REPO=coding_projects
