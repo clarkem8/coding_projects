@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Running $0"
+base_path=$(dirname $(readlink -f $0))
+
 # Add git bach function to .bash_profile
 echo "" >> $HOME/.bash_profile
 echo "parse_git_branch() {" >> $HOME/.bash_profile
