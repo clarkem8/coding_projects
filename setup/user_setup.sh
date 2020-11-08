@@ -23,5 +23,7 @@ source $HOME/.env_vars
 
 # Clone git repo
 GIT_PATH=$HOME/github/$GIT_REPO
-echo "Git path is - $GIT_PATH"
-git clone "https://github.com/$GIT_USER/$GIT_REPO.git" $GIT_PATH
+if [[ ! -d $GIT_PATH ]]; then
+    echo "Git path is - $GIT_PATH"
+    git clone "https://github.com/$GIT_USER/$GIT_REPO.git" $GIT_PATH
+fi
