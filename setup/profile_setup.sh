@@ -11,7 +11,7 @@ echo "}" >> $HOME/.bash_profile
 export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 echo "" >> $HOME/.bash_profile
 
-touch $HOME/.env_vars
 echo "source $HOME/.env_vars" >> $HOME/.bash_profile
 INSTANCEID=$(/opt/aws/bin/ec2-metadata |grep instance-id| cut -c 14-80)
 echo "INSTANCEID=$INSTANCEID" >> $HOME/.env_vars
+echo "GIT_PATH=$GIT_PATH" >> /home/$USER/.env_vars
