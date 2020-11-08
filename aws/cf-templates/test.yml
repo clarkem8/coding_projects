@@ -7,11 +7,38 @@ Parameters:
     Default: 172.31.0.0/16
     
 Resources:
-  Type: AWS::EC2::VPC
-  Properties: 
-    CidrBlock: !Ref VPCCIDR
-    EnableDnsHostnames: False
-    EnableDnsSupport: True
-    Tags: 
-      - Key: Name
-        Value: Test
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties: 
+      CidrBlock: !Ref VPCCIDR
+      EnableDnsHostnames: False
+      EnableDnsSupport: True
+      Tags: 
+        - Key: Name
+          Value: MC-Test-VPC
+    
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties: 
+      GroupDescription: Sample security group
+      GroupName: MC-Test-SG
+      SecurityGroupIngress:
+        Description: Inbound security group rules
+        CidrIp: 0.0.0.0/0
+        IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+      Tags: 
+        - Key: Name
+          Value: MC-Test-SG
+      VpcId: !Ref VPC
+
+Outputs:
+  VPC:
+    Description: VPC created
+    Value:
+      Ref: VPC
+  SecurityGroup:
+    Description: Securty group created
+    Value:
+      Ref: SecurityGroup
