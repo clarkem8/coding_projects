@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Creation of a VPC
+Parameters:
+  VPCCIDR:
+    Description: IP Address range for the VPN connected VPC
+    Type: String
+    Default: 172.31.0.0/16
+    
+Resources:
+  Type: AWS::EC2::VPC
+  Properties: 
+    CidrBlock: !Ref VPCCIDR
+    EnableDnsHostnames: False
+    EnableDnsSupport: True
+    Tags: 
+      - Key: Name
+        Value: Test
