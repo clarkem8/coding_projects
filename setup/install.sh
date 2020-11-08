@@ -15,7 +15,7 @@ if [[ $CF_INSTALL ~= "Yes" ]];then
     sudo -i -u $USER git clone "https://github.com/$GIT_USER/$GIT_REPO.git" $GIT_PATH
 
     # Install packages and run user install
-    $GIT_PATH/install_packages.sh
+    $GIT_PATH/setup/install_packages.sh
     sudo su $USER $GIT_PATH/setup/user_setup.sh
 else
     # Install packages
