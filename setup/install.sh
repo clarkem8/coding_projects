@@ -11,6 +11,7 @@ if [[ $CF_INSTALL ~= "Yes" ]];then
     yum install git -y
     GIT_REPO=coding_projects
     GIT_PATH=/home/$USER/github/$GIT_REPO
+    echo "GIT_PATH=$GIT_PATH" >> /home/$USER/.env_vars
     echo "Git path is - $GIT_PATH"
     sudo -i -u $USER git clone "https://github.com/$GIT_USER/$GIT_REPO.git" $GIT_PATH
 
