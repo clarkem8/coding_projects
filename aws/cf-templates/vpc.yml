@@ -25,11 +25,11 @@ Resources:
     Properties: 
       AvailabilityZone: 
         Ref: AZ
-      CidrBlock: "172.31.0.0/20"
+      CidrBlock: 172.31.0.0/20
       Tags: 
         - Key: Name
           Value: MC-Test-Subnet
-  VpcId: !Ref VPC
+      VpcId: !Ref VPC
   
   SecurityGroup:
     Type: AWS::EC2::SecurityGroup
@@ -52,6 +52,10 @@ Outputs:
     Description: VPC created
     Value:
       Ref: VPC
+  Subnet:
+    Description: Subnet created
+    Value:
+      Ref: Subnet
   SecurityGroup:
     Description: Securty group created
     Value:
