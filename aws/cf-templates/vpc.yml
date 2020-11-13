@@ -14,7 +14,7 @@ Resources:
     Type: AWS::EC2::VPC
     Properties: 
       CidrBlock: !Ref VPCCIDR
-      EnableDnsHostnames: False
+      EnableDnsHostnames: True
       EnableDnsSupport: True
       Tags: 
         - Key: Name
@@ -26,6 +26,7 @@ Resources:
       AvailabilityZone: 
         Ref: AZ
       CidrBlock: 172.31.0.0/20
+      MapPublicIpOnLaunch: True
       Tags: 
         - Key: Name
           Value: MC-Test-Subnet
@@ -46,7 +47,42 @@ Resources:
         - Key: Name
           Value: MC-Test-SG
       VpcId: !Ref VPC
+      
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+      - Key: Name
+        Value: MC-Test-IG
 
+  IGAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties: 
+      InternetGatewayId: !Ref InternetGateway
+      VpcId: !Ref VPC
+
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: MC-Test-PRT
+
+  DefaultPublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: InternetGateway
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  SubnetRTAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: 
+      RouteTableId: !Ref PublicRouteTable
+      SubnetId: !Ref Subnet
+      
 Outputs:
   VPC:
     Description: VPC created
