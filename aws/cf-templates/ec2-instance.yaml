@@ -1,0 +1,60 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Creation of an EC2 instance
+Parameters:
+  AMI:
+    Description: AMI to start Ec2 instance from
+    Type: String
+    Default: ami-03657b56516ab7912
+  
+  AZ:
+    Type: AWS::EC2::AvailabilityZone::Name
+
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+
+  InstanceType:
+    Type: String
+    Default: t2.micro
+    AllowedValues: 
+      - t2.micro
+      - t2.small
+    Description: Ec2 instance to be launched
+
+Mappings:
+  AuthMap:
+    us-east-2: 
+      IAM: arn:aws:iam::777448057161:instance-profile/test-iam-1
+  
+Resources:
+  EC2LaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+      LaunchTemplateName:
+        Fn::Join:
+          - '.'
+          - - Ref: AWS::StackName
+            - 'ec2-launch-template'
+      LaunchTemplateData:
+        ImageId: 
+          Ref: AMI
+        IamInstanceProfile:
+          Arn:
+            Fn::FindInMap: [AuthMap, Ref: "AWS::Region", 'IAM']
+        InstanceType:
+          Ref: InstanceType
+        KeyName: 
+          Ref: KeyName
+        NetworkInterfaces:
+          - SubnetId:
+              subnet-06a1e9e66425387d7
+            DeviceIndex: 0
+            Groups:
+              - sg-08317ef6f8619b9ab
+        
+  Ec2Instance: 
+    Type: AWS::EC2::Instance
+    Properties:
+      LaunchTemplate:
+        LaunchTemplateId:
+          Ref: EC2LaunchTemplate
+        Version: "1"
