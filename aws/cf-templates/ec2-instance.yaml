@@ -36,7 +36,7 @@ Resources:
     Properties:
       LaunchTemplateName:
         Fn::Join:
-          - '.'
+          - .
           - - Ref: AWS::StackName
             - 'ec2-launch-template'
       LaunchTemplateData:
