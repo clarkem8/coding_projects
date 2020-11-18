@@ -9,6 +9,11 @@ Parameters:
   AZ:
     Type: AWS::EC2::AvailabilityZone::Name
 
+  USER:
+    Description: USER launching the stack
+    Type: String
+    Default: clarkem8
+    
   KeyName:
     Type: AWS::EC2::KeyPair::KeyName
 
@@ -50,6 +55,11 @@ Resources:
             DeviceIndex: 0
             Groups:
               - sg-08317ef6f8619b9ab
+        TagSpecifications:
+          - ResourceType: instance
+            Tags:
+              - Key: User
+                Value: Ref: USER
         
   Ec2Instance: 
     Type: AWS::EC2::Instance
