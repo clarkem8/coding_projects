@@ -58,6 +58,12 @@ Resources:
         TagSpecifications:
           - ResourceType: instance
             Tags:
+              - Key: Name
+                Value:
+                  Fn::Join:
+                    - .
+                    - - Ref: AWS::StackName
+                      - 'EC2-Instance'
               - Key: User
                 Value: Ref: USER
         
