@@ -6,3 +6,4 @@ dependencies:
  - kdb
  - jupyter
  - pandas
+ - pylint
