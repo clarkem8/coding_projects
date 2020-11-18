@@ -60,12 +60,13 @@ Resources:
             Tags:
               - Key: Name
                 Value:
-                  Fn::Join:
-                    - .
+                  !Join
+                    - '-'
                     - - Ref: AWS::StackName
                       - 'EC2-Instance'
               - Key: User
-                Value: Ref: USER
+                Value: 
+                  Ref: USER
         
   Ec2Instance: 
     Type: AWS::EC2::Instance
