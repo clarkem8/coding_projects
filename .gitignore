@@ -1,3 +1,4 @@
 .mypy_cache/
 dot-files/vim/bundle
 dot-files/vim/plugin/plugin
+*/__pycache__/*
