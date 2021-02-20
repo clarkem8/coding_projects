@@ -1,13 +1,12 @@
-import os
+import logging
 
 class Controller:
-
+    """Controller process to manage system procs"""
+    # Initialise with a = Controller()
     def __init__(self):
         self.name = 'test'
-        print('Running init')
+        logging.info('Test check')
 
     def test(self):
-        print(self.name)
-
-    def test2(self):
+        """Test function"""
         print(self.name)

@@ -2,8 +2,9 @@ import asyncio
 import logging
 import aiohttp
 import psutil
-
 from aiohttp.web import Response
+
+from controller import Controller
 
 async def home(req):
     """Returns OK message for GET request"""
@@ -31,7 +32,8 @@ def start_proc(pname):
     logging.info(f'Started process - {pname}')
 
 def start_logging():
-    logfile = f'/home/clarkem8/log/daemon.log'
+    """Starting daemon logging"""
+    logfile = '/home/clarkem8/log/daemon.log'
     open(logfile, 'w')
     logging.basicConfig(filename=logfile,
                         level=logging.DEBUG,
@@ -39,6 +41,8 @@ def start_logging():
                         datefmt='%d/%m/%Y %H:%M:%S')
 
 start_logging()
+controller = Controller()
+
 
 if __name__ == '__main__':
     start_proc('test')
