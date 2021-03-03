@@ -51,4 +51,3 @@ class CoinbaseClient():
 
     def string_to_datetime(self, tm):
         return datetime.datetime.strptime(tm, '%Y-%m-%d %H:%M:%S')
-
