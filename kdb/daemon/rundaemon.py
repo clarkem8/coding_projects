@@ -1,3 +1,6 @@
+"""Script to run daemon process"""
+
+
 import asyncio
 import logging
 import aiohttp
@@ -17,19 +20,9 @@ async def check_proc():
         await asyncio.sleep(10)
 
 async def start_timer(app):
+    """Running timer to check on processes"""
     asyncio.get_event_loop().create_task(check_proc())
 
-def start_proc(pname):
-    logfile = f'/home/clarkem8/log/{pname}.log'
-    print(logfile)
-    logfileh = open(logfile, 'w')
-    logging.info(f'Starting process - {pname}')
-    args = ['q', f'/home/clarkem8/github/coding_projects/kdb/src/{pname}.q', '-p', '23001', '-name', pname]
-    print(args)
-    process = psutil.Popen(args,
-                            stdout=logfileh,
-                            stderr=logfileh)
-    logging.info(f'Started process - {pname}')
 
 def start_logging():
     """Starting daemon logging"""
@@ -40,12 +33,11 @@ def start_logging():
                         format='%(asctime)s %(message)s',
                         datefmt='%d/%m/%Y %H:%M:%S')
 
-start_logging()
-controller = Controller()
-
-
 if __name__ == '__main__':
-    start_proc('test')
+    start_logging()
+    controller = Controller()
+    controller.test()
+    controller.start_processes()
     APP = aiohttp.web.Application()
     APP.router.add_route('*', '/', home)
     APP.on_startup.append(start_timer)
