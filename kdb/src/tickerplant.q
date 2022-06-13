@@ -1,8 +1,6 @@
 /- tick.q script taken from 
 /- https://github.com/KxSystems/kdb-tick/blob/master/tick.q 
 
-system"l tickerplant/u.q";
-
 Test:([]time:();sym:();price:());
 
 .tp.initGlobals:{
@@ -73,4 +71,5 @@ if[not system"t";
 	}
  ];
 
-//.u.tick[];
+.tp.initGlobals[]
+.u.tick[];
