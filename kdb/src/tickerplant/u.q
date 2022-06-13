@@ -1,7 +1,7 @@
 /- .u.q script taken from 
 /- https://github.com/KxSystems/kdb-tick/blob/master/tick/u.q
 
-.u.init:{.u.w:t!(count .u.t:tables`.)#()};
+.u.init:{.u.w:.u.t!(count .u.t:tables`.)#()};
 .u.del:{.u.w[x]_:.u.w[x;;0]?y};
 .u.sel:{$[`~y;x;select from x where sym in y]};
 
