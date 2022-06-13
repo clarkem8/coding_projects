@@ -26,8 +26,9 @@ class Controller:
         logfileh = open(logfile, 'w')
         logging.info('Starting process - %s', pname)
 
-        script_path = f'/home/clarkem8/github/coding_projects/kdb/src/{pname}.q'
-        args = ['q', script_path, '-p', str(port), '-name', pname]
+        
+        script_dir = f'/home/clarkem8/github/coding_projects/kdb/src/'
+        args = ['q', f'{script_dir}/start.q', '-p', str(port), '-proc', pname, '-path', script_dir]
         print(args)
         process = psutil.Popen(args,
                                 stdout=logfileh,
