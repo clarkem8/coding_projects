@@ -28,7 +28,7 @@ class Controller:
 
         
         script_dir = f'/home/clarkem8/github/coding_projects/kdb/src/'
-        args = ['q', f'{script_dir}/start.q', '-p', str(port), '-proc', pname, '-path', script_dir]
+        args = ['q', f'{script_dir}start.q', '-p', str(port), '-proc', pname, '-path', script_dir]
         print(args)
         process = psutil.Popen(args,
                                 stdout=logfileh,

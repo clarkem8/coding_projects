@@ -6,4 +6,10 @@ dependencies:
  - python=3.6
  - kdb
  - jupyter
+ - jupyterq
  - pandas
+ - pylint
+ - mypy
+ - psutil
+ - aiohttp
+ - embedpy

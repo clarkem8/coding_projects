@@ -3,6 +3,9 @@
 d:.Q.opt .z.x;
 path:first d`path;
 
+/- This will be overwritten from common/log.q but using here
+/- to log out script loading
+
 .lg.o:{[tag;msg]
 	-1 " : " sv(string[.z.p];"{INFO}";string[tag];msg);
  };
@@ -20,8 +23,7 @@ loadDir:{
 
 loadFile:{
     .lg.o[`loadFile;"Loading ",x];
-    -1 "Loading ",x;
-	system"l ",x
+	system"l ",x;
  };
 
 loadScripts[];
