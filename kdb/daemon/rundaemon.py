@@ -17,6 +17,7 @@ async def check_proc():
     """Checking for running process"""
     while True:
         logging.info('Checking processes are running')
+        controller.check_processes()
         await asyncio.sleep(10)
 
 async def start_timer(app):
