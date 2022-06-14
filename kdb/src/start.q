@@ -27,3 +27,5 @@ loadFile:{
  };
 
 loadScripts[];
+
+.lg.o[`start;"Process started on ", string system"p"];

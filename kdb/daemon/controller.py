@@ -13,15 +13,8 @@ class Controller:
         self.logdir = '/home/clarkem8/log'
         self.rootdir = '/home/clarkem8/github/coding_projects/kdb'
 
-    def test(self):
-        """Test function"""
-        logging.info('In controller test func')
-        logging.info('Log dir is %s', self.logdir)
-
     def start_proc(self, pname, port):
         """Start a background process"""
-
-        self.test()
         logfile = f'/home/clarkem8/log/{pname}.log'
         logfileh = open(logfile, 'w')
         logging.info('Starting process - %s', pname)

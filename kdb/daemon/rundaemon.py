@@ -35,8 +35,8 @@ def start_logging():
 
 if __name__ == '__main__':
     start_logging()
+    logging.info('Starting daemon process for managing KDB processes')
     controller = Controller()
-    controller.test()
     controller.start_processes()
     APP = aiohttp.web.Application()
     APP.router.add_route('*', '/', home)
