@@ -27,7 +27,7 @@ class Controller:
                                 stdout=logfileh,
                                 stderr=logfileh)
         res = process.poll()
-        logging.info('Started process - %s - %s', pname, res)
+        logging.info('Started process - %s - %s', pname)
         return process
 
     def get_processes(self):
@@ -58,6 +58,15 @@ class Controller:
                 logging.info('%s is running on %s', proc, pid)
             else:
                 logging.info('%s is stopped, restarting...', proc)
+                self.restart_process(proc)
+
+    def restart_process(self, proc):
+        """Function for restarting a process"""
+        for _, row in self.expected_processes.iterrows():
+            if proc == row['process']:
+                port = row['port']
+                process = self.start_proc(proc, port)
+                self.running_processes.update({proc : process})
 
     def look_for_process(self, proc, process):
         """Look for running process"""

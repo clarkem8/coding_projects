@@ -28,4 +28,4 @@ loadFile:{
 
 loadScripts[];
 
-.lg.o[`start;"Process started on ", string system"p"];
+.lg.o[`start;"Process started on port - ", string system"p"];
