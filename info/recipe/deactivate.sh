@@ -1,4 +1,4 @@
 #!/bin/bash
 
 echo $PWD
-uset KDB_CORE
+unset KDB_CORE
