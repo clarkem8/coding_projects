@@ -5,7 +5,6 @@ path:first d`path;
 
 /- This will be overwritten from common/log.q but using here
 /- to log out script loading
-
 .lg.info:{[tag;msg]
 	-1 " : " sv(string[.z.p];"{INFO}";string[tag];msg);
  };

@@ -1,6 +1,7 @@
 """Module to control processes in environment"""
 import logging
 import psutil
+import os
 
 import pandas as pd
 
@@ -11,7 +12,7 @@ class Controller:
     def __init__(self):
         self.name = 'test'
         self.logdir = '/home/clarkem8/log'
-        self.rootdir = '/home/clarkem8/github/coding_projects/kdb'
+        self.rootdir = os.environ.get('KDB_CORE', '')
         self.running_processes = {}
         self.expected_processes = self.get_processes()
 
@@ -21,13 +22,13 @@ class Controller:
         logfileh = open(logfile, 'w')
         logging.info('Starting process - %s', pname)
 
-        script_dir = f'/home/clarkem8/github/coding_projects/kdb/src/'
-        args = ['q', f'{script_dir}start.q', '-p', str(port), '-proc', pname, '-path', script_dir]
+        path = f'{self.rootdir}/src/'
+        args = ['q', f'{path}start.q', '-p', str(port), '-proc', pname, '-path', path]
         process = psutil.Popen(args,
                                 stdout=logfileh,
                                 stderr=logfileh)
-        res = process.poll()
-        logging.info('Started process - %s - %s', pname)
+        process.poll()
+        logging.info('Started process - %s', pname)
         return process
 
     def get_processes(self):
