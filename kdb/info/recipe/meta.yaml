@@ -1,6 +1,0 @@
-package: 
-  name: kdb-core
-  version: 0.0.4
-source:
-  - folder: kdb_core/src
-    path: ../../src

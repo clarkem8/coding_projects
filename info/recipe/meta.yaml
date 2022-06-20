@@ -1,0 +1,12 @@
+package: 
+  name: kdb-core
+  version: 0.0.6
+source:
+  - folder: kdb_core/src
+    path: ../../kdb/src
+  - folder: kdb_core/bin
+    path: ../../kdb/bin
+  - folder: kdb_core/config
+    path: ../../kdb/config
+  - folder: kdb_core/daemon
+    path: ../../kdb/daemon
