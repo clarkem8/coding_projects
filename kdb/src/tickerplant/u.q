@@ -6,24 +6,24 @@
 .u.sel:{$[`~y;x;select from x where sym in y]};
 
 .u.pub:{[t;x]
-	{[t;x;w]
-		if[count x:.u.sel[x] w 1;
-			(neg first w)(`upd;t;x)]
-	}[t;x]each w t
+    {[t;x;w]
+        if[count x:.u.sel[x] w 1;
+            (neg first w)(`upd;t;x)]
+    }[t;x]each .u.w t
  };
 
 .u.add:{
-	$[(count .u.w x)>i:.u.w[x;;0]?.z.w;
-		.[`.u.w;(x;i;1);union;y];
-		.u.w[x],:enlist(.z.w;y)];
-	(x;$[99=type v:value x;.u.sel[v]y;@[0#v;`sym;`g#]])
+    $[(count .u.w x)>i:.u.w[x;;0]?.z.w;
+        .[`.u.w;(x;i;1);union;y];
+        .u.w[x],:enlist(.z.w;y)];
+    (x;$[99=type v:value x;.u.sel[v]y;@[0#v;`sym;`g#]])
  };
 
 .u.sub:{
-    if[x~`;:sub[;y]each t];
-    if[not x in t;'x];
+    if[x~`;:.u.sub[;y]each .u.t];
+    if[not x in .u.t;'x];
     .u.del[x].z.w;
-	.u.add[x;y]
+    .u.add[x;y]
  };
 
 .u.end:{(neg union/[.u.w[;;0]])@\:(`.u.end;x)};
