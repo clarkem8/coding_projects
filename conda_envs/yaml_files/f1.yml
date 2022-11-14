@@ -13,3 +13,5 @@ dependencies:
  - psutil
  - aiohttp
  - embedpy
+ - plotly
+ - ipywidgets
